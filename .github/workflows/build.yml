@@ -1,0 +1,37 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install
+        working-directory: ./ezpz-codes-website
+        run: npm install
+
+      - name: Build
+        working-directory: ./ezpz-codes-website
+        run: npm run build
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          workingDirectory: ./ezpz-codes-website
+          apiToken: ${{ secrets.CLOUDFLARE_WEBSITE_KEY }}
+          accountId: ae8d8d3c876e4ae9e0716165735f9091/
+          projectName: ezpz
+          directory: ./out
+          
