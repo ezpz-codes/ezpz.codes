@@ -33,5 +33,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_WEBSITE_KEY }}
           accountId: ae8d8d3c876e4ae9e0716165735f9091/
           projectName: ezpz
+          branch: main
           directory: ./out
           
