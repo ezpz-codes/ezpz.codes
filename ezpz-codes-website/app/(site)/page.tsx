@@ -50,7 +50,7 @@ export default function Home() {
                     return (
                         <Card
                             key={x.title}
-                            className="flex-1 w-0 min-w-md max-w-xl"
+                            className="flex-1 w-0 min-w-xs max-w-xl md:min-w-md"
                         >
                             <CardHeader>
                                 <CardTitle className="break-words">
